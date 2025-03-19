@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="WebCrafters offers cutting-edge digital solutions, including web development, AI/ML solutions, GFX/VFX design, and website maintenance.">
-    <title>WebCrafters - Digital Solutions</title>
+    <meta name="description" content="EliteSiteCreation offers cutting-edge digital solutions, including web development, AI/ML solutions, GFX/VFX design, and website maintenance.">
+    <title>EliteSiteCreation - Digital Solutions</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
-
     <nav class="nav-container">
         <h1 class="logo">EliteSiteCreation</h1>
         <div class="nav-links">
@@ -31,8 +25,7 @@
         <div id="hero-background"></div>
         <div class="hero-content">
             <h1>Transform Your Digital Presence</h1>
-            <p>We offer cutting-edge solutions to elevate your business in the digital world. From websites to AI
-                innovations and stunning graphics, we’re here to help.</p>
+            <p>We offer cutting-edge solutions to elevate your business in the digital world. From websites to AI innovations and stunning graphics, we’re here to help.</p>
         </div>
     </section>
 
@@ -62,10 +55,20 @@
                 </ul>
                 <button class="animated-button">Get Started</button>
             </div>
+            <div class="price-card">
+                <h5>Premium</h5>
+                <p class="price">$2999</p>
+                <ul>
+                    <li>Unlimited Pages</li>
+                    <li>Advanced SEO</li>
+                    <li>E-commerce Integration</li>
+                    <li>6 Months Support</li>
+                </ul>
+                <button class="animated-button">Get Started</button>
+            </div>
         </div>
     </section>
-
-    <!-- Website Maintenance Section -->
+<!-- Website Maintenance Section -->
     <section id="maintenance" class="section">
         <h2 class="section-title">Keep Your Website Running Smoothly</h2>
         <div class="split-container">
@@ -185,99 +188,6 @@
         <p>&copy; 2025 EliteSiteCreation. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Slideshow -->
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function previousSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        // Automatically change slides every 5 seconds
-        let autoSlideInterval = setInterval(nextSlide, 5000);
-
-        let isScrolling = false;
-        window.addEventListener(
-            "wheel",
-            (e) => {
-                if (isScrolling) return;
-
-                // Stop auto sliding on manual scroll.
-                clearInterval(autoSlideInterval);
-
-                if (e.deltaY > 0) {
-                    nextSlide();
-                } else {
-                    previousSlide();
-                }
-
-                isScrolling = true;
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 700); // adjust delay as needed
-            },
-            { passive: true }
-        );
-    </script>
-
-    <script>
-        // Initialize Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('hero-background').appendChild(renderer.domElement);
-
-        // Create particles
-        const particles = new THREE.BufferGeometry();
-        const particleCount = 1000;
-        const positions = new Float32Array(particleCount * 3);
-
-        for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 2000;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
-        }
-
-        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-        const particleMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-
-        camera.position.z = 500;
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            particleSystem.rotation.y += 0.001;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+    <script src="scripts/app.js"></script>
 </body>
-
-</html>html>
+</html>
